@@ -1,0 +1,40 @@
+{
+  "name": "servelr",
+  "version": "0.1.0",
+  "description": "Tiny HTTP server for development. Does livereload and opens in the browser.",
+  "main": "index.js",
+  "bin": {
+    "servelr": "./index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "./index.js"
+  },
+  "author": "Luke Kavanagh <ltkavanagh@gmail.com>",
+  "repository": {
+  "type": "git",
+    "url": "https://github.com/kavanagh/servelr"
+  },
+  "bugs": {
+    "url": "https://github.com/kavanagh/servelr/issues"
+  },
+  "keywords": [
+    "livereload",
+    "HTTP Server"
+  ],
+  "preferGlobal": true,
+  "license": "MIT",
+  "dependencies": {
+    "express": "~4.3.0",
+    "commander": "~2.2.0",
+    "portfinder": "~0.2.1",
+    "opener": "~1.3.0",
+    "compression": "~1.0.2",
+    "serve-static": "~1.1.0",
+    "morgan": "~1.1.1",
+    "serve-index": "~1.0.3",
+    "connect-inject": "~0.3.2",
+    "socket.io": "~0.9.16",
+    "watch": "~0.10.0"
+  }
+}
