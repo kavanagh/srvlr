@@ -168,7 +168,7 @@ function listen(p) {
   var url = 'http://' + program.address + ':' + p.toString();
   if (program.open) {
     verbose('Opening browser...');
-    !program.log && console.log('Dev server running at %s', url);
+    !program.log && console.log(pkg.name + ' running at %s', url);
     opener(url);
   }
 }
