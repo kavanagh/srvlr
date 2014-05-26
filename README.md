@@ -1,8 +1,12 @@
 # servelr
 
-Tiny HTTP server. For front-end development use.
+Tiny HTTP server for front-end developers.
 
-Does file watching, livereload and opens the index page in the browser.
+**Features:**
+
+* file watching
+* live reload
+* opens a browser on startup.
 
 ## Installation
 
@@ -12,12 +16,12 @@ $ npm install -g servelr
 
 ## Usage
 
-The current working directory will be served, unless you set the directory using the `-d` option.
+`[directory]` is optional. Defaults is the current working directory.
 
 ```sh
 $ servelr --help
 
-  Usage: servelr [options]
+  Usage: servelr [options] [directory]
 
   Options:
 
@@ -25,7 +29,6 @@ $ servelr --help
     -V, --version            output the version number
     -p, --port <PORT>        Listen on PORT.
                               An available port will be chosen if not specified.
-    -d, --dir <PATH>         Root directory for the server (defaults to CWD).
     -w, --watch              Files to watch if livereload is on. 
                               Use this when you don't want to watch the whole root directory.
     -l, --log <TYPE>         Turn on logging. Types are: tiny, verbose
