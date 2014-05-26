@@ -75,9 +75,9 @@ function noop() {}
 program
   .version(pkg.version)
   .usage('[options] [directory]')
-  .option('-p, --port <PORT>', 'Listen on PORT. An available port will be chosen if not specified.')
+  .option('-p, --port <PORT>', 'Listen on PORT. \n\t\t\t\tAn available port will be chosen if not specified.')
   .option('-w, --watch', 'When you don\'t want to watch the root directory.')
-  .option('-l, --log <TYPE>', 'Turn on log messages. Types are: tiny, verbose')
+  .option('-l, --log <TYPE>', 'Turn on log messages.\n\t\t\t\tTypes are: tiny, verbose')
   .option('-a, --age <SECONDS>', 'Max age in seconds.', seconds(defaults.maxAge))
   .option('-c, --cors', 'Enable CORS headers.')
   .option('-i, --interval <MS>', 
@@ -87,7 +87,7 @@ program
   .option('-N, --no-cache', 'Turn off all caching')
   .option('-L, --no-listing', 'Turn off directory listings')
   .option('-I, --index <FILES>', 
-                    'Optional default index page. Space separated list eg default.html index.html.', li())
+                    'Optional default index page. \n\t\t\t\tSpace separated list eg default.html index.html.', li())
   .option('-A, --address <ADDRESS>', 'Address to use [' + defaults.address + ']', defaults.address)
   .option('-H, --hidden', 'Allow hidden files')
   .option('-C, --compression', 'Turn on gzipping')
