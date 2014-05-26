@@ -1,10 +1,10 @@
 {
-  "name": "servelr",
+  "name": "servlr",
   "version": "0.1.0",
   "description": "Tiny HTTP server for development. Does livereload and opens in the browser.",
   "main": "index.js",
   "bin": {
-    "servelr": "./index.js"
+    "servlr": "./index.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -13,10 +13,10 @@
   "author": "Luke Kavanagh <ltkavanagh@gmail.com>",
   "repository": {
   "type": "git",
-    "url": "https://github.com/kavanagh/servelr"
+    "url": "https://github.com/kavanagh/servlr"
   },
   "bugs": {
-    "url": "https://github.com/kavanagh/servelr/issues"
+    "url": "https://github.com/kavanagh/servlr/issues"
   },
   "keywords": [
     "livereload",
