@@ -21,7 +21,7 @@ $ npm install -g servlr
 ```sh
 $ servlr --help
 
-  Usage: servelr [options] [directory]
+  Usage: servlr [options] [directory]
 
   Options:
 
