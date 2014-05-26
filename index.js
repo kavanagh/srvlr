@@ -2,26 +2,25 @@
 
 'use strict';
 
+var path = require('path');
+var http = require('http');
 var express = require('express');
 var portfinder = require('portfinder');
 var opener = require('opener');
 var program = require('commander');
+var serveStatic = require('serve-static');
 var pkg = require('./package.json');
 var defaults = require('./defaults.json');
-var program = require('commander');
-var serveStatic = require('serve-static');
-var path = require('path');
-var http = require('http');
 
-// pass arg as a list
-function li(delimeter) {
-  delimeter = delimeter || ' ';
+// parse option as a list
+function li(delimiter) {
+  delimiter = delimiter || ' ';
   return function (value) {
-    return !value ? [] : value.split(delimeter);
+    return !value ? [] : value.split(delimiter);
   };
 }
 
-// pass arg as seconds
+// parse option as seconds
 function seconds(deflt) {
   deflt = deflt || 0;
   return function (value) {
@@ -54,8 +53,13 @@ function nocache() {
 // simple file watching.
 // TODO: support globbing and multiple watch dirs
 function watch(path, callback) {
+  var o = {
+    ignoreDotFiles: !program.hidden,
+    persistent: true,
+    interval: watchInterval
+  };
   require('watch')
-    .watchTree(path, { ignoreDotFiles: !program.hidden, persistent: true, interval: watchInterval }, function (f, curr, prev) {
+    .watchTree(path, o, function (f, curr, prev) {
       if (typeof f == "object" && prev === null && curr === null) {
       } else if (prev === null) {
       } else if (curr !== null && curr.nlink === 0) {
@@ -72,16 +76,18 @@ program
   .version(pkg.version)
   .usage('[options] [directory]')
   .option('-p, --port <PORT>', 'Listen on PORT. An available port will be chosen if not specified.')
-  .option('-w, --watch', 'Files to watch if livereload is on. Use this when you don\'t want to watch the whole root directory.')
+  .option('-w, --watch', 'When you don\'t want to watch the root directory.')
   .option('-l, --log <TYPE>', 'Turn on log messages. Types are: tiny, verbose')
   .option('-a, --age <SECONDS>', 'Max age in seconds.', seconds(defaults.maxAge))
   .option('-c, --cors', 'Enable CORS headers.')
-  .option('-i, --interval <MS>', 'Watch polling interval in milliseconds. Default 500.', seconds(defaults.watchInterval))
+  .option('-i, --interval <MS>', 
+                    'Watch polling interval in milliseconds. Default 500.', seconds(defaults.watchInterval))
   .option('-R, --no-reload', 'No Livereload')
   .option('-O, --no-open', 'Dont open browser after starting the server')
   .option('-N, --no-cache', 'Turn off all caching')
   .option('-L, --no-listing', 'Turn off directory listings')
-  .option('-I, --index <FILES>', 'Default index page, optional. Space separated list eg default.html index.html.', li())
+  .option('-I, --index <FILES>', 
+                    'Optional default index page. Space separated list eg default.html index.html.', li())
   .option('-A, --address <ADDRESS>', 'Address to use [' + defaults.address + ']', defaults.address)
   .option('-H, --hidden', 'Allow hidden files')
   .option('-C, --compression', 'Turn on gzipping')
@@ -97,6 +103,7 @@ var watchInterval = program.interval || defaults.watchInterval;
 var cwd = process.cwd();
 var directory = !!program.args.length ? path.resolve(cwd, program.args[0]) : cwd;
 var watchDirectory = program.watch ? path.resolve(cwd, program.watch) : directory;
+var listingOptions = { hidden: program.hidden, icons: true, view: 'details' };
 
 verbose('Using directory: %s', directory);
 
@@ -147,7 +154,7 @@ app.use(serveStatic(directory, {
 }));
 
 // directory listings
-program.listing && app.use(require('serve-index')(directory, { hidden: program.hidden, icons: true, view: 'details' }));
+program.listing && app.use(require('serve-index')(directory, listingOptions));
 
 // very basic error handling.
 // TODO: is more needed here?
