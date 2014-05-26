@@ -70,7 +70,7 @@ function noop() {}
 
 program
   .version(pkg.version)
-  .option('-d, --dir <PATH>', 'Root directory for the server. Defaults to CWD.')
+  .usage('[options] [directory]')
   .option('-p, --port <PORT>', 'Listen on PORT. An available port will be chosen if not specified.')
   .option('-w, --watch', 'Files to watch if livereload is on. Use this when you don\'t want to watch the whole root directory.')
   .option('-l, --log <TYPE>', 'Turn on log messages. Types are: tiny, verbose')
@@ -95,7 +95,7 @@ var maxAge = !program.cache ? 0 : (program.age || defaults.maxAge) * 1000;
 var indexPages = program.index && program.index.length ? program.index : defaults.indexPages;
 var watchInterval = program.interval || defaults.watchInterval;
 var cwd = process.cwd();
-var directory = !!program.dir ? path.resolve(cwd, program.dir) : cwd;
+var directory = !!program.args.length ? path.resolve(cwd, program.args[0]) : cwd;
 var watchDirectory = program.watch ? path.resolve(cwd, program.watch) : directory;
 
 verbose('Using directory: %s', directory);
