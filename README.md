@@ -16,7 +16,7 @@ $ npm install -g servlr
 
 ## Usage
 
-`[directory]` is optional. Defaults is the current working directory.
+`[directory]` is optional, defaults to the current working directory.
 
 ```sh
 $ servlr --help
