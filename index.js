@@ -75,6 +75,7 @@ function noop() {}
 program
   .version(pkg.version)
   .usage('[options] [directory]')
+  .option('-u, --url <URL>', 'URL to open in the browser.\n\t\t\t\tDo not include the origin (protocol/host/port).')
   .option('-p, --port <PORT>', 'Listen on PORT. \n\t\t\t\tAn available port will be chosen if not specified.')
   .option('-w, --watch', 'When you don\'t want to watch the root directory.')
   .option('-l, --log <TYPE>', 'Turn on log messages.\n\t\t\t\tTypes are: tiny, verbose')
@@ -165,7 +166,7 @@ app.use(function (err, req, res, next) {
 function listen(p) {
   server.listen(p);
   log('Listening on port %s', p);
-  var url = 'http://' + program.address + ':' + p.toString();
+  var url = 'http://' + program.address + ':' + p.toString() + '/' + (program.url || '');
   if (program.open) {
     verbose('Opening browser...');
     !program.log && console.log(pkg.name + ' running at %s', url);

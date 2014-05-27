@@ -27,10 +27,13 @@ $ servlr --help
 
     -h, --help               output usage information
     -V, --version            output the version number
-    -p, --port <PORT>        Listen on PORT.
-                              An available port will be chosen if not specified.
+    -u, --url <URL>          URL to open in the browser.
+                    Do not include the origin (protocol/host/port).
+    -p, --port <PORT>        Listen on PORT. 
+                    An available port will be chosen if not specified.
     -w, --watch              When you don't want to watch the root directory.
-    -l, --log <TYPE>         Turn on log messages. Types are: tiny, verbose
+    -l, --log <TYPE>         Turn on log messages.
+                    Types are: tiny, verbose
     -a, --age <SECONDS>      Max age in seconds.
     -c, --cors               Enable CORS headers.
     -i, --interval <MS>      Watch polling interval in milliseconds. Default 500.
@@ -39,7 +42,7 @@ $ servlr --help
     -N, --no-cache           Turn off all caching
     -L, --no-listing         Turn off directory listings
     -I, --index <FILES>      Optional default index page. 
-                                Space separated list eg default.html index.html.
+                    Space separated list eg default.html index.html.
     -A, --address <ADDRESS>  Address to use [0.0.0.0]
     -H, --hidden             Allow hidden files
     -C, --compression        Turn on gzipping
