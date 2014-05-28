@@ -1,4 +1,4 @@
-# servlr
+# srvlr
 
 Tiny HTTP server for front-end developers.
 
@@ -11,7 +11,7 @@ Tiny HTTP server for front-end developers.
 ## Installation
 
 ```sh
-$ npm install -g servlr
+$ npm install -g srvlr
 ```
 
 ## Usage
@@ -19,9 +19,9 @@ $ npm install -g servlr
 `[directory]` is optional, defaults to the current working directory.
 
 ```sh
-$ servlr --help
+$ srvlr --help
 
-  Usage: servlr [options] [directory]
+  Usage: srvlr [options] [directory]
 
   Options:
 
