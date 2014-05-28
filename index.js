@@ -104,6 +104,7 @@ var watchInterval = program.interval || defaults.watchInterval;
 var cwd = process.cwd();
 var directory = !!program.args.length ? path.resolve(cwd, program.args[0]) : cwd;
 var watchDirectory = program.watch ? path.resolve(cwd, program.watch) : directory;
+var staticOptions = { index: indexPages, maxAge: maxAge, hidden: program.hidden};
 var listingOptions = { hidden: program.hidden, icons: true, view: 'details' };
 
 verbose('Using directory: %s', directory);
@@ -135,24 +136,15 @@ if (program.reload) {
   io.enable('browser client gzip');
   io.set('log level', 1);
 
-  var w = false;
-
-  // when the browser opens/reloads first time, setup file watching.
-  io.sockets.on('connection', function () {
-    if (w) return;
-    verbose('creating change watcher');
-    w = watch(watchDirectory, function () {
-      io.sockets.emit('reload');
-    }); 
+  verbose('creating change watcher');
+  watch(watchDirectory, function () {
+    console.log('reload')
+    io.sockets.emit('reload');
   });
 }
 
 // basic static file server
-app.use(serveStatic(directory, {
-  index: indexPages,
-  maxAge: maxAge,
-  hidden: program.hidden
-}));
+app.use(serveStatic(directory, staticOptions));
 
 // directory listings
 program.listing && app.use(require('serve-index')(directory, listingOptions));
