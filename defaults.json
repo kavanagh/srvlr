@@ -1,6 +1,6 @@
 {
   "address": "0.0.0.0",
-  "basePort": "8000",
+  "basePort": 8000,
   "watchInterval": 500,
   "maxAge": 0,
   "indexPages": [
