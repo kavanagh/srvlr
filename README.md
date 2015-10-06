@@ -14,6 +14,8 @@ Tiny HTTP server for front-end developers.
 $ npm install -g srvlr
 ```
 
+Alternatively, if global installation is not what you're looking for then [try the local approach]().
+
 ## Usage
 
 `[directory]` is optional, defaults to the current working directory.

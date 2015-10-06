@@ -138,7 +138,6 @@ if (program.reload) {
 
   verbose('creating change watcher');
   watch(watchDirectory, function () {
-    console.log('reload')
     io.sockets.emit('reload');
   });
 }

@@ -25,16 +25,16 @@
   "preferGlobal": true,
   "license": "MIT",
   "dependencies": {
-    "express": "~4.3.0",
+    "express": "~4.13.3",
     "commander": "~2.2.0",
-    "portfinder": "~0.2.1",
-    "opener": "~1.3.0",
+    "portfinder": "~0.4.0",
+    "opener": "~1.4.1",
     "compression": "~1.0.2",
-    "serve-static": "~1.1.0",
+    "serve-static": "~1.10.0",
     "morgan": "~1.1.1",
-    "serve-index": "~1.0.3",
+    "serve-index": "~1.7.2",
     "connect-inject": "~0.3.2",
     "socket.io": "~0.9.16",
-    "watch": "~0.10.0"
+    "watch": "~0.16.0"
   }
 }
