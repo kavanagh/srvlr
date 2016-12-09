@@ -131,9 +131,6 @@ if (program.reload) {
 
   var io = require('socket.io').listen(server, { log: false });
 
-  io.enable('browser client minification');
-  io.enable('browser client etag');
-  io.enable('browser client gzip');
   io.set('log level', 1);
 
   verbose('creating change watcher');
