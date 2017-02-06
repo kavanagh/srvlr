@@ -1,6 +1,6 @@
 {
   "name": "srvlr",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "Tiny HTTP server for development. Does livereload and opens in the browser.",
   "main": "index.js",
   "bin": {
